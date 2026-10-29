@@ -1,5 +1,5 @@
 # Imagen base con soporte vigente (Node 18 ya no recibe actualizaciones)
-FROM node:20-alpine
+FROM node:25-alpine
 WORKDIR /app
 # 1) Primero solo los archivos de dependencias (aprovecha la caché de Docker)
 COPY package*.json ./
