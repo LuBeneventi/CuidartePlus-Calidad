@@ -1,0 +1,13 @@
+# Dependencias (se reinstalan con npm install)
+node_modules/
+# Archivos con secretos: NUNCA se suben a GitHub
+.env
+.env.sonar
+**/.env
+# Resultados generados por las herramientas
+coverage/
+dist/
+playwright-report/
+test-results/
+zap/
+.scannerwork/
