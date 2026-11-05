@@ -22,7 +22,7 @@ RUN rm -rf node_modules/.cache && npm rebuild esbuild --force
 RUN npm run build
  
 # Etapa 2: Producción
-FROM nginx:1.27-alpine
+FROM nginx:1.31-alpine
  
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
