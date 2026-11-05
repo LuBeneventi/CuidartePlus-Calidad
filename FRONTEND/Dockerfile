@@ -1,5 +1,5 @@
 # Etapa 1: Construcción
-FROM node:20 AS builder
+FROM node:26 AS builder
  
 WORKDIR /app
  
