@@ -1,3 +1,5 @@
+const helmet = require("helmet");
+
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
@@ -18,6 +20,7 @@ const rolesRoutes = require("./routes/roles");
 
 const app = express();
 
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));

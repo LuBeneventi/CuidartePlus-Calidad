@@ -1,0 +1,17 @@
+{
+"name": "cuidarteplus-pruebas-e2e",
+"version": "1.0.0",
+"description": "Pruebas de sistema, aceptación y accesibilidad de Cuidarteplus",
+"scripts": {
+"test": "playwright test",
+"test:sistema": "playwright test tests/sistema",
+"test:aceptacion": "playwright test tests/aceptacion",
+"test:accesibilidad": "playwright test tests/accesibilidad",
+"reporte": "playwright show-report"
+},
+"devDependencies": {
+"@axe-core/playwright": "^4.10.2",
+"@playwright/test": "^1.56.1"
+},
+"private": true
+}
