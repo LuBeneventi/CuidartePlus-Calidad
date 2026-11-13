@@ -600,6 +600,22 @@ async function updateUsuarioSistemaMedico(
 
 router.delete("/:id", async (req, res) => {
   try {
+    const authUser = getUserFromAuthHeader(req);
+    if (!authUser) {
+      return res.status(401).json({
+        error: "No autorizado",
+        glosa: "Token inválido",
+      });
+    }
+
+    // RB-4 / RB-5: solo un administrador puede eliminar usuarios
+    if (authUser.rolNombre !== "admin") {
+      return res.status(403).json({
+        error: "Acción no permitida",
+        glosa: "Solo un administrador puede eliminar usuarios",
+      });
+    }
+
     const result = await pool.query(
       "DELETE FROM usuarios WHERE id=$1 RETURNING *",
       [req.params.id]
@@ -607,7 +623,6 @@ router.delete("/:id", async (req, res) => {
     if (result.rows.length === 0)
       return res.status(404).json({ error: "No encontrado" });
 
-    const authUser = getUserFromAuthHeader(req);
     await pool.query(
       "INSERT INTO auditoria (usuario_id, accion) VALUES ($1, $2)",
       [
